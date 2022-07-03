@@ -35,6 +35,34 @@ public class ConverterSwitchTest {
         //Assert
         assertEquals(expectedValue, actualValue);
     }
+    @Test
+    public void shouldReturnFebruary(){
+        //Arrange
+        Converter converter = new ConverterIf();
+        String expectedValue ="February";
+
+
+
+        //act
+        String actualValue =converter.convertMonth(2);
+
+        //Assert
+        assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void shouldReturnWednesday(){
+        //Arrange
+        Converter converter = new ConverterIf();
+        String expectedValue ="Wednesday";
+
+
+
+        //act
+        String actualValue =converter.convertDay(4);
+
+        //Assert
+        assertEquals(expectedValue, actualValue);
+    }
 
 
 
