@@ -7,27 +7,27 @@ public class ConverterIf implements Converter{
         } else if(monthNumber==2){
             return "February";
         }else if(monthNumber==3){
-            return "February";
+            return "March";
         }else if(monthNumber==4){
-            return "February";
+            return "April";
         }else if(monthNumber==5){
-            return "February";
+            return "May";
         }else if(monthNumber==6){
-            return "February";
+            return "June";
         }else if(monthNumber==7){
-            return "February";
+            return "July";
         }else if(monthNumber==8){
-            return "February";
+            return "August";
         }else if(monthNumber==9){
-            return "February";
+            return "September";
         }else if(monthNumber==10){
-            return "February";
+            return "October";
         }else if(monthNumber==11){
-            return "February";
+            return "November";
         }else if(monthNumber==12){
-            return "February";
+            return "December";
         }else{
-            return "February";
+            return "Please enter a month";
         }
 
 
@@ -36,21 +36,21 @@ public class ConverterIf implements Converter{
 
     public String convertDay(int dayNumber) {
         if (dayNumber == 1) {
-            return "February";
+            return "Sunday";
         } else if (dayNumber == 2) {
-            return "February";
+            return "Monday";
         } else if (dayNumber == 3) {
-            return "February";
+            return "Tuesday";
         } else if (dayNumber == 4) {
-            return "February";
+            return "Wednesday";
         } else if (dayNumber == 5) {
-            return "February";
+            return "Thursday";
         } else if (dayNumber == 6) {
-            return "February";
+            return "Friday";
         } else if (dayNumber == 7) {
-            return "February";
+            return "Saturday";
         } else {
-            return "February";
+            return "please enter a number between 1 and 7";
         }
     }
 

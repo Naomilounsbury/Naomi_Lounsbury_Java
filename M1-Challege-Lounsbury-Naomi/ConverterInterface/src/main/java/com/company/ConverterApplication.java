@@ -8,9 +8,9 @@ public class ConverterApplication{
         //Converter convert;
         //convert =janFirst;
         System.out.println(janFirst.convertMonth(1));
-        janFirst.convertDay(1);
-        janSecond.convertMonth(1);
-        janSecond.convertDay(2);
+        System.out.println(janFirst.convertDay(1));
+        System.out.println(janSecond.convertMonth(1));;
+        System.out.println(janSecond.convertDay(2));;
 
     }
 }

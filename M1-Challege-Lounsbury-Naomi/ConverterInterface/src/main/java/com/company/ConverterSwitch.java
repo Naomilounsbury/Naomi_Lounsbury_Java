@@ -5,12 +5,13 @@ package com.company;
 public class ConverterSwitch implements Converter{
     public String convertMonth(int monthNumber) {
         String returnVal ="no number";
+        //I made the months and days lower case to make it easy to differentiate when they are called
         switch(monthNumber) {
             case 1:
-                returnVal= "January";
+                returnVal= "january";
                 break;
             case 2:
-                returnVal= "February";
+                returnVal= "february";
                 break;
             case 3:
                 returnVal= "march";
@@ -28,7 +29,7 @@ public class ConverterSwitch implements Converter{
                 returnVal= "july";
                 break;
             case 8:
-                returnVal= "August";
+                returnVal= "august";
                 break;
             case 9:
                 returnVal= "september";
@@ -40,7 +41,7 @@ public class ConverterSwitch implements Converter{
                 returnVal= "november";
                 break;
             case 12:
-                returnVal= "December";
+                returnVal= "december";
                 break;
             default:
                 returnVal= "that wasn't a number between 1 and 12";
