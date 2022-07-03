@@ -56,6 +56,19 @@ public class IceCream {
         this.ingredients = ingredients;
     }
 
+    public void factoryMalfunction(String ingredient){
+        System.out.println("There is no more of the "+ ingredient);
+    }
+    public void lengthenProductionTime(int hour){
+        System.out.println("The production time has been lengthened by "+hour+" hour(s)");
+    }
+    public void increaseProductionCost(double increase){
+        double previousProdCost =this.productionCost;
+        double currentProdCost= this.productionCost+=increase;
+        System.out.println("The production cost has increased from "+previousProdCost+" to "+currentProdCost);
+
+    }
+
     @Override
     public String toString() {
         return "IceCream{" +
