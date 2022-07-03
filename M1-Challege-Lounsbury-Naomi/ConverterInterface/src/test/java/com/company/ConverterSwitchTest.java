@@ -21,6 +21,20 @@ public class ConverterSwitchTest {
         //Assert
         assertEquals(expectedValue, actualValue);
     }
+    @Test
+    public void shouldReturnMonday(){
+        //Arrange
+        Converter converter = new ConverterSwitch();
+        String expectedValue ="monday";
+
+
+
+        //act
+        String actualValue =converter.convertDay(2);
+
+        //Assert
+        assertEquals(expectedValue, actualValue);
+    }
 
 
 
