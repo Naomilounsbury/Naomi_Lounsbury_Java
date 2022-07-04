@@ -23,9 +23,7 @@ public class IceCream {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+    public void setPrice(double price) {this.price = price;}
 
     public double getProfit() {
         return profit;
@@ -43,7 +41,7 @@ public class IceCream {
     }
     public String sale(){
         double currentPrice = this.price*0.8;
-        return "There's a sale on "+this.flavor+". The new price is now  "+currentPrice+".";
+        return "There's a sale on "+this.flavor+". The new price is now "+currentPrice+".";
     }
 
     public String toString() {
