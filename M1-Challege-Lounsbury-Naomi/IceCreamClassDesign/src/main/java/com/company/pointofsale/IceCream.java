@@ -34,16 +34,16 @@ public class IceCream {
     public void setProfit(double profit) {
         this.profit = profit;
     }
-    public void aDogStoleAnIceCreamGiveFreeIceCream(String flavor){
-        System.out.println("A dog stole a child's ice cream, give a free "+flavor+" ice cream.");
+    public String aDogStoleAnIceCreamGiveFreeIceCream(String flavor){
+        return "A dog stole a child's ice cream, give a free "+flavor+" ice cream.";
     }
-    public void ARobberCameSetProfitToZero(){
+    public String ARobberCameSetProfitToZero(){
         double currentVal=this.profit=0;
-        System.out.println("You've been robbed. The current profit of this flavor is "+currentVal+" dollars");
+        return "You've been robbed. The current profit of this flavor is "+currentVal+" dollars";
     }
-    public void sale(){
+    public String sale(){
         double currentPrice = this.price*0.8;
-        System.out.println("There's a sale on "+this.flavor+". The new price is now  "+currentPrice+".");
+        return "There's a sale on "+this.flavor+". The new price is now  "+currentPrice+".";
     }
 
     public String toString() {

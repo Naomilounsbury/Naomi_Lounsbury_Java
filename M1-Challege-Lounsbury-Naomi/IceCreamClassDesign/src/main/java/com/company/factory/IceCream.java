@@ -56,16 +56,16 @@ public class IceCream {
         this.ingredients = ingredients;
     }
 
-    public void factoryMalfunction(String ingredient){
-        System.out.println("There is no more of the "+ ingredient);
+    public String factoryMalfunction(String ingredient){
+        return "There is no more of the "+ ingredient;
     }
-    public void lengthenProductionTime(int hour){
-        System.out.println("The production time has been lengthened by "+hour+" hour(s)");
+    public String lengthenProductionTime(int hour){
+        return "The production time has been lengthened by "+hour+" hour(s)";
     }
-    public void increaseProductionCost(double increase){
+    public String increaseProductionCost(double increase){
         double previousProdCost =this.productionCost;
         double currentProdCost= this.productionCost+=increase;
-        System.out.println("The production cost has increased from "+previousProdCost+" to "+currentProdCost);
+        return "The production cost has increased from "+previousProdCost+" to "+currentProdCost;
 
     }
 

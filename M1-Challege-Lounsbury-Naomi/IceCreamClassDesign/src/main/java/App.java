@@ -9,11 +9,11 @@ public class App {
         System.out.println(peanutIceCreamSale.getFlavor());
         System.out.println(peanutIceCreamSale.getProfit());
         System.out.println(peanutIceCreamFactory);
-        peanutIceCreamFactory.factoryMalfunction("peanuts");
-        peanutIceCreamFactory.lengthenProductionTime(5);
-        peanutIceCreamFactory.increaseProductionCost(50.00);
-        peanutIceCreamSale.aDogStoleAnIceCreamGiveFreeIceCream("mango");
-        peanutIceCreamSale.ARobberCameSetProfitToZero();
-        peanutIceCreamSale.sale();
+        System.out.println(peanutIceCreamFactory.factoryMalfunction("peanuts"));
+        System.out.println(peanutIceCreamFactory.lengthenProductionTime(5));
+        System.out.println(peanutIceCreamFactory.increaseProductionCost(50.00));
+        System.out.println(peanutIceCreamSale.aDogStoleAnIceCreamGiveFreeIceCream("mango"));
+        System.out.println(peanutIceCreamSale.ARobberCameSetProfitToZero());
+        System.out.println(peanutIceCreamSale.sale());
     }
 }
