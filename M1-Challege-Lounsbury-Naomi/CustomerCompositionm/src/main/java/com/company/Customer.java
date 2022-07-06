@@ -1,6 +1,7 @@
 package com.company;
 
 public class Customer {
+    //referenced composition assignment from the bootcamp but changed names
 
         private String firstName;
         private String lastName;
