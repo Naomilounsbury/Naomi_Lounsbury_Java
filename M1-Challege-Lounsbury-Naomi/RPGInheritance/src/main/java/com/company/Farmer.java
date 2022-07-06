@@ -38,6 +38,6 @@ public class Farmer extends BaseCharacter{
     }
 
     public String introduction(){
-        return "My name is "+getName()+ "and I'm a farmer";
+        return "My name is "+getName()+ " and I'm a farmer";
     }
 }

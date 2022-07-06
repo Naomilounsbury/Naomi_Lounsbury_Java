@@ -60,7 +60,7 @@ public class FarmerTest {
     public void introduction() {
 
         Farmer guy= new Farmer("Johnny Beau", 75, 100,75, 10, 1,false, false,false, false);
-        String expectedValue ="My name is "+guy.getName()+ "and I'm a farmer";
+        String expectedValue ="My name is "+guy.getName()+ " and I'm a farmer";
 
         //act
         String actualValue = guy.introduction();
