@@ -22,9 +22,6 @@ public class FarmerTest {
     public void setHarvesting() {
     }
 
-    @Test
-    public void testToString() {
-    }
 
     @Test
     public void introduction() {

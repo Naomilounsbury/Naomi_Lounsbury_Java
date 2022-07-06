@@ -28,8 +28,9 @@ public class BaseCharacter {
         return name;
     }
 
-    public void setName(String name) {
+    public String setName(String name) {
         this.name = name;
+        return name;
     }
 
     public int getStrength() {
@@ -88,8 +89,9 @@ public class BaseCharacter {
         this.arrested = arrested;
 
     }
-    public void attacks(String theOtherGuy){
-        System.out.println(this.name+" attacked "+theOtherGuy);
+    public String attacks(String theOtherGuy){
+
+        return this.name+" attacked "+theOtherGuy;
     }
 
     @Override
