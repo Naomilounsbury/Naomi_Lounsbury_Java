@@ -37,7 +37,7 @@ public class Farmer extends BaseCharacter{
                 '}';
     }
 
-    public void introduction(){
-        System.out.println("My name is "+getName()+ "and I'm a farmer");
+    public String introduction(){
+        return "My name is "+getName()+ "and I'm a farmer";
     }
 }
