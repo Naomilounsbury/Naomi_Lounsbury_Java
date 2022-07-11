@@ -88,7 +88,7 @@ public class IceCreamTest {
         String expectedValue = "A dog stole a child's ice cream, give a free Strawberry ice cream.";
 
         //act
-        String actualValue =peanutIceCreamSale.aDogStoleAnIceCreamGiveFreeIceCream("Strawberry");
+        String actualValue =peanutIceCreamSale.aDogStoleAnIceCreamGiveFreeIceCream("Straberry");
 
         //Assert
         assertEquals(expectedValue, actualValue);
@@ -111,7 +111,7 @@ public class IceCreamTest {
     public void sale() {
         com.company.pointofsale.IceCream peanutIceCreamSale = new com.company.pointofsale.IceCream("Mango", 2.5, .5);
         peanutIceCreamSale.sale();
-        String expectedValue= "There's a sale on Mango. The new price is now 2.0.";;
+        String expectedValue= "There's a sale on mango. The new price is now 2.0";;
 
         //act
         String actualValue =peanutIceCreamSale.sale();
