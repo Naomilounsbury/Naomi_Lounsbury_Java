@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.company.M2ChallengeLounsburyNaomi.exceptions.NotFoundException;
 import com.company.M2ChallengeLounsburyNaomi.models.Month;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,24 @@ public class MonthController {
 
 
     ));
+    @RequestMapping(value = "/month/{number}", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public Month getMonthById(@PathVariable int number) {
+        Month foundMonth = null;
+
+        for(Month month : monthList) {
+            if(month.getNumber() == number) {
+                foundMonth = month;
+                break;
+            }
+        }
+
+        if (foundMonth == null) {
+            throw new NotFoundException("Month not found in database");
+        }
+
+        return foundMonth;
+    }
 //    Month Converter:
 //URI: /month/{monthNumber}
 //HTTP Method: GET

@@ -1,0 +1,89 @@
+package com.company.M2ChallengeLounsburyNaomi.controller;
+
+import static org.junit.Assert.*;
+
+import com.company.M2ChallengeLounsburyNaomi.models.MathSolution;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(MathController.class)
+public class MathControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+
+    // ObjectMapper used to convert Java objects to JSON and vice versa
+    private ObjectMapper mapper = new ObjectMapper();
+
+    @Before
+    public void setUp() throws JsonProcessingException {
+        // This is the standard set up method that runs before each test. It's typically used for instantiating test
+        // objects. We don't have to do anything special for mockMvc since it's Autowired. We will however be using
+        // setUp() in the future.
+    }
+    @Test
+    public void shouldReturn422StatusCodeWithInvalidRequestBody()throws Exception{
+            // ARRANGE
+            MathSolution math = new MathSolution();
+            math.setOperand1(5);
+            math.setOperand2(8);
+            math.setOperation("lalala");
+            math.setAnswer();
+
+            // c
+            String inputJson = mapper.writeValueAsString(math);
+
+            // ACT
+            mockMvc.perform(
+                            post("/add")                                // Perform the POST request.
+                                    .content(inputJson)                               // Set the request body.
+                                    .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                    )
+                    .andDo(print())                                           // Print results to console.
+                    .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturn422StatusCodeWithNumbers()throws Exception{
+        // ARRANGE
+        Map<String, String> input=new HashMap<>();
+        input.put("operand1", "8");
+        input.put("operand2", "this is a string not a number");
+        input.put("operation", "add");
+//        MathSolution math = new MathSolution();
+//        math.setOperand1(5);
+//        math.setOperand2(8);
+//        math.setOperation("lalala");
+//        math.setAnswer();
+
+        // c
+        String inputJson = mapper.writeValueAsString(input);
+
+        // ACT
+        mockMvc.perform(
+                        post("/add")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+
+    }
+
+
+}

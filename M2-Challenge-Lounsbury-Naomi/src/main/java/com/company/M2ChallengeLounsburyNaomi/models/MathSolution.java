@@ -1,13 +1,25 @@
 package com.company.M2ChallengeLounsburyNaomi.models;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class MathSolution {
-
+    @NotNull
     private int operand1;
+    @NotNull
     private int operand2;
     private String operation;
     private int answer;
+
+    public MathSolution(int operand1, int operand2, String operation, int answer) {
+        this.operand1 = operand1;
+        this.operand2 = operand2;
+        this.operation = operation;
+        this.answer = answer;
+    }
+
+    public MathSolution() {
+    }
 
     public int getOperand1() {
         return operand1;
@@ -37,8 +49,24 @@ public class MathSolution {
         return answer;
     }
 
-    public void setAnswer(int answer) {
-        this.answer = answer;
+    public void setAnswer() {
+        switch(this.operation){
+            case "add":
+                this.answer =this.operand1+operand2;
+                break;
+            case "subtract":
+                this.answer =this.operand1-operand2;
+                break;
+            case "multiply":
+                this.answer =this.operand1*operand2;
+                break;
+            case "divide":
+                this.answer =this.operand1/operand2;
+                break;
+
+
+        }
+
     }
 
     @Override
