@@ -1,6 +1,5 @@
 package com.company.M2ChallengeLounsburyNaomi.controller;
 
-import com.company.M2ChallengeLounsburyNaomi.exceptions.NotFoundException;
 import com.company.M2ChallengeLounsburyNaomi.models.Month;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

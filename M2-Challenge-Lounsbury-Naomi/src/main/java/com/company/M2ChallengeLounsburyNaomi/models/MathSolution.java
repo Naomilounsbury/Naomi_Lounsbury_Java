@@ -1,12 +1,14 @@
 package com.company.M2ChallengeLounsburyNaomi.models;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class MathSolution {
-    @NotNull
+    @Digits(integer=3,fraction = 0)
     private int operand1;
-    @NotNull
+
+    @Digits(integer=3,fraction = 0)
     private int operand2;
     private String operation;
     private int answer;

@@ -32,10 +32,10 @@ public class MathController {
     public MathSolution createAdd(@Valid @RequestBody MathSolution math) {
         math.setAnswer();
         mathList.add(math);
-
-        if(math.getOperand1()==NaN||math.getOperand2()==NaN) {
-            throw new IllegalArgumentException("you suck, put in a number");
-        }
+//
+//        if(math.getOperand1()==NaN||math.getOperand2()==NaN) {
+//            throw new IllegalArgumentException("put in a number");
+//        }
         if(!math.getOperation().equalsIgnoreCase("add")){
             throw new IllegalArgumentException("That is not a proper value for operation");
         }

@@ -65,14 +65,36 @@ public class MathControllerTest {
         input.put("operand1", "8");
         input.put("operand2", "this is a string not a number");
         input.put("operation", "add");
+//        input.put("answer", "");
 //        MathSolution math = new MathSolution();
 //        math.setOperand1(5);
 //        math.setOperand2(8);
-//        math.setOperation("lalala");
+//        math.setOperation("add");
 //        math.setAnswer();
 
         // c
         String inputJson = mapper.writeValueAsString(input);
+
+        // ACT
+        this.mockMvc.perform(
+                        post("/add")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isNotFound());             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturnSum() throws Exception{
+        // ARRANGE
+        MathSolution math = new MathSolution();
+        math.setOperand1(5);
+        math.setOperand2(8);
+        math.setOperation("add");
+        math.setAnswer();
+
+        String inputJson = mapper.writeValueAsString(math);
 
         // ACT
         mockMvc.perform(
@@ -81,9 +103,55 @@ public class MathControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
                 )
                 .andDo(print())                                           // Print results to console.
-                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+                .andExpect(status().isCreated())
+                .andExpect(content().json(inputJson));             // ASSERT (status code is 422)
 
     }
+    @Test
+    public void shouldReturnDifference() throws Exception{
+        // ARRANGE
+        MathSolution math = new MathSolution();
+        math.setOperand1(5);
+        math.setOperand2(8);
+        math.setOperation("subtract");
+        math.setAnswer();
+
+        String inputJson = mapper.writeValueAsString(math);
+
+        // ACT
+        mockMvc.perform(
+                        post("/subtract")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json(inputJson));             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturnMultiplication() throws Exception{
+        // ARRANGE
+        MathSolution math = new MathSolution();
+        math.setOperand1(5);
+        math.setOperand2(8);
+        math.setOperation("multiply");
+        math.setAnswer();
+
+        String inputJson = mapper.writeValueAsString(math);
+
+        // ACT
+        mockMvc.perform(
+                        post("/multiply")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json(inputJson));             // ASSERT (status code is 422)
+
+    }
+
 
 
 }
