@@ -1,14 +1,16 @@
 package com.company.M2ChallengeLounsburyNaomi.models;
 
-import javax.validation.constraints.Digits;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class MathSolution {
-    @Digits(integer=3,fraction = 0)
+    @NotNull(message = "please put in a number")
     private int operand1;
 
-    @Digits(integer=3,fraction = 0)
+    @NotNull(message="please put in a number")
+    @Min(1)
     private int operand2;
     private String operation;
     private int answer;

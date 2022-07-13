@@ -51,16 +51,5 @@ public class MonthController {
 
         return foundMonth;
     }
-//    Month Converter:
-//URI: /month/{monthNumber}
-//HTTP Method: GET
-//Request Body: None
-//Response Body: A Month object containing the name and number of the requested month (1—January, 2—February, etc.)
-//Error: 422, if the input is out of range
 
-//Random Month:
-//URI: /randomMonth
-//HTTP Method: GET
-//Request Body: None
-//Response Body: A Month object containing a randomly selected month
 }

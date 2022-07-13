@@ -9,7 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Float.NaN;
+import static java.lang.Double.NaN;
+
 
 @RestController
 public class MathController {
@@ -33,9 +34,6 @@ public class MathController {
         math.setAnswer();
         mathList.add(math);
 //
-//        if(math.getOperand1()==NaN||math.getOperand2()==NaN) {
-//            throw new IllegalArgumentException("put in a number");
-//        }
         if(!math.getOperation().equalsIgnoreCase("add")){
             throw new IllegalArgumentException("That is not a proper value for operation");
         }
@@ -53,8 +51,9 @@ public class MathController {
     public MathSolution createSubtract(@RequestBody @Valid MathSolution math) {
         math.setAnswer();
         mathList.add(math);
-        if(math.getOperand1()==NaN) {
-            throw new IllegalArgumentException("you suck, put in a number");
+
+        if(!math.getOperation().equalsIgnoreCase("subtract")){
+            throw new IllegalArgumentException("That is not a proper value for operation");
         }
 
         return math;
@@ -72,8 +71,9 @@ public class MathController {
     public MathSolution createMultiply(@Valid @RequestBody MathSolution math) {
         math.setAnswer();
         mathList.add(math);
-        if(math.getOperand1()==NaN) {
-            throw new IllegalArgumentException("you suck, put in a number");
+
+        if(!math.getOperation().equalsIgnoreCase("multiply")){
+            throw new IllegalArgumentException("That is not a proper value for operation");
         }
 
         return math;
@@ -89,10 +89,9 @@ public class MathController {
     public MathSolution createDivide(@Valid @RequestBody MathSolution math) {
         math.setAnswer();
         mathList.add(math);
-        if(math.getOperand1()==NaN||math.getOperand2()==NaN) {
-            throw new IllegalArgumentException("you suck, put in a number");
-        }
-        if(!math.getOperation().equalsIgnoreCase("add")){
+        System.out.println(math.getOperand2());
+
+        if(!math.getOperation().equalsIgnoreCase("divide")){
             throw new IllegalArgumentException("That is not a proper value for operation");
         }
         return math;

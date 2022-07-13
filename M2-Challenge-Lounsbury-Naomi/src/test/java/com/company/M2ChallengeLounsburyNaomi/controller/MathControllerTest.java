@@ -151,6 +151,28 @@ public class MathControllerTest {
                 .andExpect(content().json(inputJson));             // ASSERT (status code is 422)
 
     }
+    @Test
+    public void shouldReturnDivision() throws Exception{
+        // ARRANGE
+        MathSolution math = new MathSolution();
+        math.setOperand1(16);
+        math.setOperand2(8);
+        math.setOperation("divide");
+        math.setAnswer();
+
+        String inputJson = mapper.writeValueAsString(math);
+
+        // ACT
+        mockMvc.perform(
+                        post("/divide")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isCreated())
+                .andExpect(content().json(inputJson));             // ASSERT (status code is 422)
+
+    }
 
 
 
