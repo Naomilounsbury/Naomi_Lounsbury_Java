@@ -35,7 +35,7 @@ public class MonthController {
     ));
     @RequestMapping(value = "/month/{number}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Month getMonthById(@PathVariable int number) {
+    public Month getMonthByNumber(@PathVariable int number) {
         Month foundMonth = null;
 
         for(Month month : monthList) {
@@ -45,8 +45,11 @@ public class MonthController {
             }
         }
 
-        if (foundMonth == null) {
-            throw new NotFoundException("Month not found in database");
+//        if (foundMonth == null) {
+//            throw new NotFoundException("Month not found in database");
+//        }
+        if(foundMonth.getNumber()>12||foundMonth.getNumber()<1){
+            throw new NotFoundException("Thats not a month");
         }
 
         return foundMonth;

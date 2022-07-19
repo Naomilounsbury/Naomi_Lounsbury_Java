@@ -37,13 +37,12 @@ public class MathControllerTest {
         // setUp() in the future.
     }
     @Test
-    public void shouldReturn422StatusCodeWithInvalidRequestBody()throws Exception{
+    public void shouldReturn422StatusCodeWithInvalidRequestBodyForAdd()throws Exception{
             // ARRANGE
             MathSolution math = new MathSolution();
             math.setOperand1(5);
             math.setOperand2(8);
-            math.setOperation("lalala");
-            math.setAnswer();
+
 
             // c
             String inputJson = mapper.writeValueAsString(math);
@@ -59,21 +58,20 @@ public class MathControllerTest {
 
     }
     @Test
-    public void shouldReturn422StatusCodeWithNumbers()throws Exception{
+    public void shouldReturn422StatusCodeForInputTypeOfZeroAdd()throws Exception{
         // ARRANGE
-        Map<String, String> input=new HashMap<>();
-        input.put("operand1", "8");
-        input.put("operand2", "this is a string not a number");
-        input.put("operation", "add");
+//        Map<String, String> input=new HashMap<>();
+//        input.put("operand1", "0");
+//        input.put("operand2", "this is a string not a number");
 //        input.put("answer", "");
-//        MathSolution math = new MathSolution();
-//        math.setOperand1(5);
-//        math.setOperand2(8);
-//        math.setOperation("add");
-//        math.setAnswer();
+        MathSolution math = new MathSolution();
+        math.setOperand1(0);
+        math.setOperand2(0);
+        math.setOperation("add");
+        math.setAnAnswer();
 
         // c
-        String inputJson = mapper.writeValueAsString(input);
+ String inputJson = mapper.writeValueAsString(math);
 
         // ACT
         this.mockMvc.perform(
@@ -82,7 +80,85 @@ public class MathControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
                 )
                 .andDo(print())                                           // Print results to console.
-                .andExpect(status().isNotFound());             // ASSERT (status code is 422)
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturn422StatusCodeForInputTypeOfZeroSubtract()throws Exception{
+        // ARRANGE
+//        Map<String, String> input=new HashMap<>();
+//        input.put("operand1", "0");
+//        input.put("operand2", "this is a string not a number");
+//        input.put("answer", "");
+        MathSolution math = new MathSolution();
+        math.setOperand1(0);
+        math.setOperand2(0);
+        math.setOperation("subtract");
+        math.setAnAnswer();
+
+        // c
+        String inputJson = mapper.writeValueAsString(math);
+
+        // ACT
+        this.mockMvc.perform(
+                        post("/subtract")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturn422StatusCodeForInputTypeOfZeroForMultiply()throws Exception{
+        // ARRANGE
+//        Map<String, String> input=new HashMap<>();
+//        input.put("operand1", "0");
+//        input.put("operand2", "this is a string not a number");
+//        input.put("answer", "");
+        MathSolution math = new MathSolution();
+        math.setOperand1(0);
+        math.setOperand2(0);
+        math.setOperation("multiply");
+        math.setAnAnswer();
+
+        // c
+        String inputJson = mapper.writeValueAsString(math);
+
+        // ACT
+        this.mockMvc.perform(
+                        post("/multiply")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturn422StatusCodeForInputTypeOfZeroDivide()throws Exception{
+        // ARRANGE
+//        Map<String, String> input=new HashMap<>();
+//        input.put("operand1", "0");
+//        input.put("operand2", "this is a string not a number");
+//        input.put("answer", "");
+        MathSolution math = new MathSolution();
+        math.setOperand1(0);
+        math.setOperand2(0);
+        math.setOperation("divide");
+
+
+        // c
+        String inputJson = mapper.writeValueAsString(math);
+
+        // ACT
+        this.mockMvc.perform(
+                        post("/divide")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
 
     }
     @Test
@@ -92,7 +168,9 @@ public class MathControllerTest {
         math.setOperand1(5);
         math.setOperand2(8);
         math.setOperation("add");
-        math.setAnswer();
+        math.setAnAnswer();
+
+
 
         String inputJson = mapper.writeValueAsString(math);
 
@@ -114,7 +192,9 @@ public class MathControllerTest {
         math.setOperand1(5);
         math.setOperand2(8);
         math.setOperation("subtract");
-        math.setAnswer();
+        math.setAnAnswer();
+
+
 
         String inputJson = mapper.writeValueAsString(math);
 
@@ -136,7 +216,7 @@ public class MathControllerTest {
         math.setOperand1(5);
         math.setOperand2(8);
         math.setOperation("multiply");
-        math.setAnswer();
+        math.setAnAnswer();
 
         String inputJson = mapper.writeValueAsString(math);
 
@@ -158,7 +238,8 @@ public class MathControllerTest {
         math.setOperand1(16);
         math.setOperand2(8);
         math.setOperation("divide");
-        math.setAnswer();
+        math.setAnAnswer();
+
 
         String inputJson = mapper.writeValueAsString(math);
 
@@ -171,6 +252,27 @@ public class MathControllerTest {
                 .andDo(print())                                           // Print results to console.
                 .andExpect(status().isCreated())
                 .andExpect(content().json(inputJson));             // ASSERT (status code is 422)
+
+    }
+    @Test
+    public void shouldReturn422StatusCodeForStringInputs()throws Exception{
+        // ARRANGE
+        Map<String, String> input=new HashMap<>();
+        input.put("operand1", "5");
+
+
+
+
+        String inputJson = mapper.writeValueAsString(input);
+
+        // ACT
+        this.mockMvc.perform(
+                        post("/add")                                // Perform the POST request.
+                                .content(inputJson)                               // Set the request body.
+                                .contentType(MediaType.APPLICATION_JSON)          // Tell the server it's in JSON format.
+                )
+                .andDo(print())                                           // Print results to console.
+                .andExpect(status().isUnprocessableEntity());             // ASSERT (status code is 422)
 
     }
 

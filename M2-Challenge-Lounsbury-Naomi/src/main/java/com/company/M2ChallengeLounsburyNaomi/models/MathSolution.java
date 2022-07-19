@@ -12,6 +12,7 @@ public class MathSolution {
     @NotNull(message="please put in a number")
     @Min(1)
     private int operand2;
+
     private String operation;
     private int answer;
 
@@ -53,7 +54,8 @@ public class MathSolution {
         return answer;
     }
 
-    public void setAnswer() {
+
+    public void setAnAnswer() {
         switch(this.operation){
             case "add":
                 this.answer =this.operand1+operand2;
@@ -67,9 +69,8 @@ public class MathSolution {
             case "divide":
                 this.answer =this.operand1/operand2;
                 break;
+    }
 
-
-        }
 
     }
 

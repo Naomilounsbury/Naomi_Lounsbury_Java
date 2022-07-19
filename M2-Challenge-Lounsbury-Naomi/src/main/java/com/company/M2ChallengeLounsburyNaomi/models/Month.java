@@ -1,9 +1,12 @@
 package com.company.M2ChallengeLounsburyNaomi.models;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class Month {
+    @NotNull(message = "please put in a number")
     private int number;
+
     private String name;
 
     public Month(int number, String name) {
