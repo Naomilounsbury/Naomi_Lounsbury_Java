@@ -259,6 +259,7 @@ public class MathControllerTest {
         // ARRANGE
         Map<String, String> input=new HashMap<>();
         input.put("operand1", "5");
+        input.put("operand2", "this is a string");
 
 
 
