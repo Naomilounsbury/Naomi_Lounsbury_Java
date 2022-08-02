@@ -41,32 +41,7 @@ public class GameStoreServiceLayerTest {
     }
 
     //Testing Invoice Operations...
-    @Test
-    public void shouldCreateFindInvoice() {
-        TShirt tShirt = new TShirt();
-        tShirt.setSize("Medium");
-        tShirt.setColor("Blue");
-        tShirt.setDescription("V-Neck");
-        tShirt.setPrice(new BigDecimal("19.99"));
-        tShirt.setQuantity(5);
-        tShirt = client.createTShirt(tShirt);
 
-        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setName("John Jake");
-        invoiceViewModel.setStreet("street");
-        invoiceViewModel.setCity("Charlotte");
-        invoiceViewModel.setState("NC");
-        invoiceViewModel.setZipcode("83749");
-        invoiceViewModel.setItemType("T-Shirt");
-        invoiceViewModel.setItemId(54);
-        invoiceViewModel.setQuantity(2);
-
-        invoiceViewModel = service.createInvoice(invoiceViewModel);
-
-        InvoiceViewModel ivmfromService = service.getInvoice(invoiceViewModel.getId());
-
-        assertEquals(invoiceViewModel, ivmfromService);
-    }
 
     @Test
     public void shouldFindAllInvoices(){
@@ -129,133 +104,9 @@ public class GameStoreServiceLayerTest {
     }
 
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldFailCreateFindInvoiceWithBadState() {
-        TShirtViewModel tShirt = new TShirtViewModel();
-        tShirt.setId(99);
-        tShirt.setSize("Small");
-        tShirt.setColor("Red");
-        tShirt.setDescription("sleeveless");
-        tShirt.setPrice(new BigDecimal("400"));
-        tShirt.setQuantity(30);
 
-        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setName("John Jake");
-        invoiceViewModel.setStreet("street");
-        invoiceViewModel.setCity("Charlotte");
-        invoiceViewModel.setState("NY");
-        invoiceViewModel.setZipcode("83749");
-        invoiceViewModel.setItemType("T-Shirt");
-        invoiceViewModel.setItemId(99);
-        invoiceViewModel.setQuantity(2);
 
-        invoiceViewModel = service.createInvoice(invoiceViewModel);
 
-        InvoiceViewModel ivmfromService = service.getInvoice(invoiceViewModel.getId());
-
-        assertEquals(invoiceViewModel, ivmfromService);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldFailCreateFindInvoiceWithBadItemType() {
-        TShirt tShirt = new TShirt();
-        tShirt.setSize("Medium");
-        tShirt.setColor("Blue");
-        tShirt.setDescription("V-Neck");
-        tShirt.setPrice(new BigDecimal("19.99"));
-        tShirt.setQuantity(5);
-        tShirt = client.createTShirt(tShirt);
-
-        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setName("John Jake");
-        invoiceViewModel.setStreet("street");
-        invoiceViewModel.setCity("Charlotte");
-        invoiceViewModel.setState("NC");
-        invoiceViewModel.setZipcode("83749");
-        invoiceViewModel.setItemType("Bad Item Type");
-        invoiceViewModel.setItemId(54);
-        invoiceViewModel.setQuantity(2);
-
-        invoiceViewModel = service.createInvoice(invoiceViewModel);
-
-        InvoiceViewModel ivmfromService = service.getInvoice(invoiceViewModel.getId());
-
-        assertEquals(invoiceViewModel, ivmfromService);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldFailCreateFindInvoiceWithNoInventory() {
-        TShirt tShirt = new TShirt();
-        tShirt.setSize("Medium");
-        tShirt.setColor("Blue");
-        tShirt.setDescription("V-Neck");
-        tShirt.setPrice(new BigDecimal("19.99"));
-        tShirt.setQuantity(5);
-        tShirt = client.createTShirt(tShirt);
-
-        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setName("John Jake");
-        invoiceViewModel.setStreet("street");
-        invoiceViewModel.setCity("Charlotte");
-        invoiceViewModel.setState("NC");
-        invoiceViewModel.setZipcode("83749");
-        invoiceViewModel.setItemType("T-Shirt");
-        invoiceViewModel.setItemId(54);
-        invoiceViewModel.setQuantity(6);
-
-        invoiceViewModel = service.createInvoice(invoiceViewModel);
-
-        InvoiceViewModel ivmfromService = service.getInvoice(invoiceViewModel.getId());
-
-        assertEquals(invoiceViewModel, ivmfromService);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldFailWhenCreateInvoiceInvalidItem() {
-        TShirt tShirt = new TShirt();
-        tShirt.setSize("Medium");
-        tShirt.setColor("Blue");
-        tShirt.setDescription("V-Neck");
-        tShirt.setPrice(new BigDecimal("19.99"));
-        tShirt.setQuantity(5);
-        tShirt = client.createTShirt(tShirt);
-
-        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setName("John Jake");
-        invoiceViewModel.setStreet("street");
-        invoiceViewModel.setCity("Charlotte");
-        invoiceViewModel.setState("NC");
-        invoiceViewModel.setZipcode("83749");
-        invoiceViewModel.setItemType("nothing");
-        invoiceViewModel.setItemId(54);
-        invoiceViewModel.setQuantity(2);
-
-        invoiceViewModel = service.createInvoice(invoiceViewModel);
-
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldFailWhenCreateInvoiceInvalidQuantity() {
-        TShirt tShirt = new TShirt();
-        tShirt.setSize("Medium");
-        tShirt.setColor("Blue");
-        tShirt.setDescription("V-Neck");
-        tShirt.setPrice(new BigDecimal("19.99"));
-        tShirt.setQuantity(5);
-        tShirt = client.createTShirt(tShirt);
-
-        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setName("John Jake");
-        invoiceViewModel.setStreet("street");
-        invoiceViewModel.setCity("Charlotte");
-        invoiceViewModel.setState("NC");
-        invoiceViewModel.setZipcode("83749");
-        invoiceViewModel.setItemType("T-Shirt");
-        invoiceViewModel.setItemId(54);
-        invoiceViewModel.setQuantity(0);
-
-        invoiceViewModel = service.createInvoice(invoiceViewModel);
-    }
 
     @Test(expected = NullPointerException.class)
     public void shouldFailWhenCreateInvoiceInvalidInvoiceMV() {
